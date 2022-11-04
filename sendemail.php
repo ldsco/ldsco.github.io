@@ -1,6 +1,6 @@
 <?php
-if(isset($_POST['E-mail']) and isset($_POST['Name'])  {
-$msg =  "Visitor Name: ".$_POST['Name']."\r\n"."\r\n"."Visitor Email ".$_POST['E-mail']."\r\n";
+if(isset($_POST['Email']) and isset($_POST['Name'])  {
+$msg =  "Visitor Name: ".$_POST['Name']."\r\n"."\r\n"."Visitor Email ".$_POST['Email']."\r\n";
 $to = "info@idsco.com";
   $headers  = "Reply-To: Ldsco Contact Website <info@ldsco.com>\r\n";
   $headers .= "Return-Path: Ldsco Contact Website  <info@ldsco.com>\r\n";
