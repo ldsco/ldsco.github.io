@@ -182,8 +182,8 @@
             <div class="aside__content">
               <p class="aside__title">Our website is under construction, but we are ready to go!</p>
               <p class="aside__text">Want to know more, feel free to contact us:</p>
-              
-<p class="aside__text">  <i style="color: #eec692" class="fa fa-mail-forward"></i>&nbsp;&nbsp; info@idsco.ly </p>
+
+<p class="aside__text">  <i style="color: #eec692" class="fa fa-mail-forward"></i>&nbsp;&nbsp; info@ldsco.ly </p>
               <p style="color: white" class="aside__text">  <i style="color: #eec692" class="fa fa-phone"></i>&nbsp;&nbsp; 00218213352040 </p>
              
              
@@ -246,15 +246,15 @@
                       <div class="container-fluid px-4">
                         <div class="row gx-5">
                           <div class="col-12">
-                            <input class="transition-el transition-el-2" type="text" name="Name" placeholder="Your Name*" required>
+                            <input id="Name" class="transition-el transition-el-2" type="text" name="Name" placeholder="Your Name*" required>
                           </div>
                           <div class="col-12">
-                            <input class="transition-el transition-el-3" type="email" name="E-mail" placeholder="Email Adress*" required>
+                            <input id="E-mail" class="transition-el transition-el-3" type="email" name="E-mail" placeholder="Email Adress*" required>
                           </div>
                           
                           <div class="col-12">
                             <span class="inputs-description opacity-el opacity-el-1">*Required fields</span>
-                            <button class="button button-solid-light transition-el transition-el-5">
+                            <button onclick="sendemail()" class="button button-solid-light transition-el transition-el-5">
                               <span class="button-caption">Send</span>
                             </button>
                           </div>
@@ -778,7 +778,57 @@
       </div>
 
     </div>
-
+<script type="text/javascript">
+	
+function sendemail(){
+        var x1=document.getElementById('E-mail').value;
+        var x2=document.getElementById('Name').value;
+       
+        
+        $.ajax({
+        type: 'POST',
+        url: '/sendemail.php',
+        data:{email1:x1,name1:x2,message1:x3},
+        success: function(response) {
+            console.log(response);
+        if((x1!="")&&(x2!="")){
+         Swal.fire( 
+  'success!',
+  'Message sent successfully!',
+  'success'
+)
+      }
+      
+             else  {Swal.fire(
+  'Error!',
+  'Please fill in all fields!',
+  'eroor'
+);
+      } 
+        },
+       error: function(response) {
+           console.log(response);
+        if((x1!="")&&(x2!="")){
+         Swal.fire(
+  'success!',
+  'Message sent successfully!',
+  'success'
+)
+      }
+      
+            else  {Swal.fire(
+  'Error!',
+  'Please fill in all fields!',
+  'eroor'
+);
+      } 
+       }
+             
+             
+         });
+        
+    }
+</script>
     <!-- Load Scripts Start -->
     <script src="js/libs.min.js"></script>
     <script src="js/gallery-init.js"></script>
